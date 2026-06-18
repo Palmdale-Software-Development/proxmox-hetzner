@@ -148,8 +148,8 @@ make_answer_toml() {
 
 [disk-setup]
     filesystem = "zfs"
-    zfs.raid = "raid1"
-    disk_list = ["/dev/vda", "/dev/vdb"]
+    zfs.raid = "raidz1"
+    disk_list = ["/dev/vda", "/dev/vdb", "/dev/vdc"]
 
 EOF
     echo -e "${CLR_GREEN}answer.toml created.${CLR_RESET}"
@@ -206,7 +206,8 @@ boot_proxmox_with_port_forwarding() {
         -netdev user,id=net0,hostfwd=tcp::5555-:22 \
         -smp 4 -m 4096 \
         -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio \
-        -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio -display none \
+        -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio \
+        -drive file=/dev/nvme2n1,format=raw,media=disk,if=virtio \
         > qemu_output.log 2>&1 &
     
     QEMU_PID=$!
