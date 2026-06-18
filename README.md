@@ -55,7 +55,7 @@ This project provides an automated solution for installing Proxmox VE on Hetzner
 Execute this single command in the rescue system terminal:
 
 ```bash
-bash <(curl -sSL https://github.com/ariadata/proxmox-hetzner/raw/main/scripts/pve-install.sh)
+bash <(curl -sSL https://github.com/Palmdale-Software-Development/proxmox-hetzner/raw/main/scripts/pve-install.sh)
 ```
 
 The script will:
