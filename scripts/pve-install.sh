@@ -188,6 +188,7 @@ install_proxmox() {
         -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio \
         -drive file=/dev/nvme4n1,format=raw,media=disk,if=virtio \
         -no-reboot -display none > /dev/null 2>&1
+        
 }
 
 # Function to boot the installed Proxmox via QEMU with port forwarding
