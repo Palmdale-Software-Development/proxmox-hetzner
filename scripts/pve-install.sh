@@ -132,7 +132,7 @@ download_proxmox_iso() {
 }
 
 make_answer_toml() {
-    echo -e "${CLR_BLUE}Making answer.toml...${CLR_RESET}"
+    echo -e "${CLR_BLUE}Making answer.toml file...${CLR_RESET}"
     cat <<EOF > answer.toml
 [global]
     keyboard = "en-us"
