@@ -148,7 +148,7 @@ make_answer_toml() {
 
 [disk-setup]
     filesystem = "zfs"
-    zfs.raid = "raidz-1"
+    zfs.raid = "raidz1"
     disk_list = ["/dev/vda", "/dev/vdb", "/dev/vdc"]
 
 EOF
