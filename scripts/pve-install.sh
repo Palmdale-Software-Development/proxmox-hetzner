@@ -64,11 +64,11 @@ get_system_inputs() {
     echo "IPv6: $MAIN_IPV6"
     
     # Get user input for other configuration
-    read -e -p "Enter your hostname : " -i "proxmox-example" HOSTNAME
-    read -e -p "Enter your FQDN name : " -i "proxmox.example.com" FQDN
-    read -e -p "Enter your timezone : " -i "Europe/Istanbul" TIMEZONE
+    read -e -p "Enter your hostname : " -i "pve01" HOSTNAME
+    read -e -p "Enter your FQDN name : " -i "pve01.mailcore.network" FQDN
+    read -e -p "Enter your timezone : " -i "Europe/Amsterdam" TIMEZONE
     read -e -p "Enter your email address: " -i "admin@example.com" EMAIL
-    read -e -p "Enter your private subnet : " -i "192.168.26.0/24" PRIVATE_SUBNET
+    read -e -p "Enter your private subnet : " -i "10.10.10.0/24" PRIVATE_SUBNET
     read -e -p "Enter your System New root password: " NEW_ROOT_PASSWORD
     
     # Get the network prefix (first three octets) from PRIVATE_SUBNET
@@ -186,7 +186,7 @@ install_proxmox() {
         -boot d -cdrom ./pve-autoinstall.iso \
         -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio \
         -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio \
-        -drive file=/dev/nvme4n1,format=raw,media=disk,if=virtio \
+        -drive file=/dev/nvme3n1,format=raw,media=disk,if=virtio \
         -no-reboot -display none > /dev/null 2>&1
         
 }
@@ -210,7 +210,7 @@ boot_proxmox_with_port_forwarding() {
         -smp 4 -m 4096 \
         -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio \
         -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio \
-        -drive file=/dev/nvme4n1,format=raw,media=disk,if=virtio \
+        -drive file=/dev/nvme3n1,format=raw,media=disk,if=virtio \
         -display none \
         > qemu_output.log 2>&1 &
     
